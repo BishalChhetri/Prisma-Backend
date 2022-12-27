@@ -38,8 +38,7 @@ export class AuthDtoSignin {
 export class AuthDtoUpdatePassword {
   @IsNotEmpty()
   @IsString()
-  @IsEmail()
-  public email: string;
+  public id: string;
 
   @IsNotEmpty()
   @IsString()

@@ -88,11 +88,11 @@ export class AuthService {
     req: Request,
     res: Response,
   ) {
-    const { email, password, newPassword } = dto;
+    const { id, password, newPassword } = dto;
 
     const foundUser = await this.prisma.user.findUnique({
       where: {
-        email,
+        id,
       },
     });
 
