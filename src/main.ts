@@ -30,7 +30,7 @@ async function bootstrap() {
     {
       webServerOptions: {
         enabled: true,
-        path: 'http://localhost:5000',
+        path: '',
       },
       fileGeneratorOptions: {
         enabled: true,
@@ -43,7 +43,7 @@ async function bootstrap() {
         additionalProperties:
           'apiPackage=clients,modelPackage=models,withoutPrefixEnums=true,withSeparateModelsAndApi=true',
         openApiFilePath: './openapi.json',
-        skipValidation: true,
+        skipValidation: false,
       },
     },
     {

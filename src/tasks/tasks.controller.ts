@@ -19,50 +19,50 @@ export class TasksController {
 
   @UseGuards(JwtAuthGuard)
   @Get(':authorId')
-  getMyTask(@Param() params: { authorId: string }, @Req() req) {
-    return this.tasksService.getMyTask(params.authorId, req);
+  getMyTask(@Param('authorId') authorId: string, @Req() req) {
+    return this.tasksService.getMyTask(authorId, req);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get(':authorId/:filter')
   getFilterTask(
-    @Param() params: { authorId: string; filter: string },
+    @Param('authorId') authorId: string,
+    @Param('filter')
+    filter: string,
     @Req() req,
   ) {
-    return this.tasksService.getFilterTask(params.authorId, params.filter, req);
+    return this.tasksService.getFilterTask(authorId, filter, req);
   }
 
   @UseGuards(JwtAuthGuard)
   @Post(':id/create')
-  create(@Param() params: { id: string }, @Body() dto: TaskDto) {
-    return this.tasksService.create(params.id, dto);
+  create(@Param('id') id: string, @Body() dto: TaskDto) {
+    return this.tasksService.create(id, dto);
   }
 
   @UseGuards(JwtAuthGuard)
   @Post(':id/update/:taskId')
   async updateTask(
-    @Param() params: { id: string; taskId: string },
+    @Param('id') id: string,
+    @Param('taskId')
+    taskId: string,
     @Request() req,
     @Response() res,
     @Body() dto: TaskUpdate,
   ) {
-    return this.tasksService.updateTask(
-      params.id,
-      params.taskId,
-      dto,
-      req,
-      res,
-    );
+    return this.tasksService.updateTask(id, taskId, dto, req, res);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get(':id/delete/:taskId')
   async deleteTask(
-    @Param() params: { id: string; taskId: string },
+    @Param('id') id: string,
+    @Param('taskId')
+    taskId: string,
     @Request() req,
     @Response() res,
   ) {
-    return this.tasksService.deleteTask(params.id, params.taskId, req, res);
+    return this.tasksService.deleteTask(id, taskId, req, res);
   }
 
   @Get()
