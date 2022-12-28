@@ -13,6 +13,24 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * 
+ * @export
+ * @interface TaskDto
+ */
+export interface TaskDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof TaskDto
+     */
+    'title': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TaskDto
+     */
+    'description': string;
+}
+

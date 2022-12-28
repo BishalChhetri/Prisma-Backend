@@ -7,4 +7,9 @@ common.ts
 configuration.ts
 git_push.sh
 index.ts
+models/auth-dto-signin.ts
+models/auth-dto-update-password.ts
+models/auth-dto.ts
 models/index.ts
+models/task-dto.ts
+models/task-update.ts

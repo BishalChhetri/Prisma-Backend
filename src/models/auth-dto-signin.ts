@@ -13,6 +13,24 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * 
+ * @export
+ * @interface AuthDtoSignin
+ */
+export interface AuthDtoSignin {
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthDtoSignin
+     */
+    'email': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AuthDtoSignin
+     */
+    'password': string;
+}
+

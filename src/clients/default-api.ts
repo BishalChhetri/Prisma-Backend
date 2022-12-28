@@ -20,6 +20,16 @@ import { Configuration } from '../configuration';
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+// @ts-ignore
+import { AuthDto } from '../models';
+// @ts-ignore
+import { AuthDtoSignin } from '../models';
+// @ts-ignore
+import { AuthDtoUpdatePassword } from '../models';
+// @ts-ignore
+import { TaskDto } from '../models';
+// @ts-ignore
+import { TaskUpdate } from '../models';
 /**
  * DefaultApi - axios parameter creator
  * @export
@@ -29,15 +39,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @param {string} id 
-         * @param {object} body 
+         * @param {TaskDto} taskDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create: async (id: string, body: object, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        create: async (id: string, taskDto: TaskDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('create', 'id', id)
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('create', 'body', body)
+            // verify required parameter 'taskDto' is not null or undefined
+            assertParamExists('create', 'taskDto', taskDto)
             const localVarPath = `/tasks/{id}/create`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -58,7 +68,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(taskDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -265,13 +275,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {object} body 
+         * @param {AuthDtoSignin} authDtoSignin 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        signin: async (body: object, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('signin', 'body', body)
+        signin: async (authDtoSignin: AuthDtoSignin, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'authDtoSignin' is not null or undefined
+            assertParamExists('signin', 'authDtoSignin', authDtoSignin)
             const localVarPath = `/auth/signin`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -291,7 +301,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(authDtoSignin, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -329,13 +339,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {object} body 
+         * @param {AuthDto} authDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        signup: async (body: object, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('signup', 'body', body)
+        signup: async (authDto: AuthDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'authDto' is not null or undefined
+            assertParamExists('signup', 'authDto', authDto)
             const localVarPath = `/auth/signup`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -355,7 +365,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(authDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -364,13 +374,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {object} body 
+         * @param {AuthDtoUpdatePassword} authDtoUpdatePassword 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePassword: async (body: object, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('updatePassword', 'body', body)
+        updatePassword: async (authDtoUpdatePassword: AuthDtoUpdatePassword, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'authDtoUpdatePassword' is not null or undefined
+            assertParamExists('updatePassword', 'authDtoUpdatePassword', authDtoUpdatePassword)
             const localVarPath = `/auth/updatePassword`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -390,7 +400,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(authDtoUpdatePassword, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -401,17 +411,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * 
          * @param {string} id 
          * @param {string} taskId 
-         * @param {object} body 
+         * @param {TaskUpdate} taskUpdate 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTask: async (id: string, taskId: string, body: object, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateTask: async (id: string, taskId: string, taskUpdate: TaskUpdate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateTask', 'id', id)
             // verify required parameter 'taskId' is not null or undefined
             assertParamExists('updateTask', 'taskId', taskId)
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('updateTask', 'body', body)
+            // verify required parameter 'taskUpdate' is not null or undefined
+            assertParamExists('updateTask', 'taskUpdate', taskUpdate)
             const localVarPath = `/tasks/{id}/update/{taskId}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)))
                 .replace(`{${"taskId"}}`, encodeURIComponent(String(taskId)));
@@ -433,7 +443,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(taskUpdate, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -453,12 +463,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {string} id 
-         * @param {object} body 
+         * @param {TaskDto} taskDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async create(id: string, body: object, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(id, body, options);
+        async create(id: string, taskDto: TaskDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(id, taskDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -523,12 +533,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {object} body 
+         * @param {AuthDtoSignin} authDtoSignin 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async signin(body: object, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.signin(body, options);
+        async signin(authDtoSignin: AuthDtoSignin, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.signin(authDtoSignin, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -542,34 +552,34 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {object} body 
+         * @param {AuthDto} authDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async signup(body: object, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.signup(body, options);
+        async signup(authDto: AuthDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.signup(authDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @param {object} body 
+         * @param {AuthDtoUpdatePassword} authDtoUpdatePassword 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updatePassword(body: object, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updatePassword(body, options);
+        async updatePassword(authDtoUpdatePassword: AuthDtoUpdatePassword, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updatePassword(authDtoUpdatePassword, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @param {string} id 
          * @param {string} taskId 
-         * @param {object} body 
+         * @param {TaskUpdate} taskUpdate 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateTask(id: string, taskId: string, body: object, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateTask(id, taskId, body, options);
+        async updateTask(id: string, taskId: string, taskUpdate: TaskUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateTask(id, taskId, taskUpdate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -585,12 +595,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @param {string} id 
-         * @param {object} body 
+         * @param {TaskDto} taskDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create(id: string, body: object, options?: any): AxiosPromise<void> {
-            return localVarFp.create(id, body, options).then((request) => request(axios, basePath));
+        create(id: string, taskDto: TaskDto, options?: any): AxiosPromise<void> {
+            return localVarFp.create(id, taskDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -648,12 +658,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {object} body 
+         * @param {AuthDtoSignin} authDtoSignin 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        signin(body: object, options?: any): AxiosPromise<void> {
-            return localVarFp.signin(body, options).then((request) => request(axios, basePath));
+        signin(authDtoSignin: AuthDtoSignin, options?: any): AxiosPromise<void> {
+            return localVarFp.signin(authDtoSignin, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -665,32 +675,32 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {object} body 
+         * @param {AuthDto} authDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        signup(body: object, options?: any): AxiosPromise<void> {
-            return localVarFp.signup(body, options).then((request) => request(axios, basePath));
+        signup(authDto: AuthDto, options?: any): AxiosPromise<void> {
+            return localVarFp.signup(authDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @param {object} body 
+         * @param {AuthDtoUpdatePassword} authDtoUpdatePassword 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePassword(body: object, options?: any): AxiosPromise<void> {
-            return localVarFp.updatePassword(body, options).then((request) => request(axios, basePath));
+        updatePassword(authDtoUpdatePassword: AuthDtoUpdatePassword, options?: any): AxiosPromise<void> {
+            return localVarFp.updatePassword(authDtoUpdatePassword, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {string} id 
          * @param {string} taskId 
-         * @param {object} body 
+         * @param {TaskUpdate} taskUpdate 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTask(id: string, taskId: string, body: object, options?: any): AxiosPromise<void> {
-            return localVarFp.updateTask(id, taskId, body, options).then((request) => request(axios, basePath));
+        updateTask(id: string, taskId: string, taskUpdate: TaskUpdate, options?: any): AxiosPromise<void> {
+            return localVarFp.updateTask(id, taskId, taskUpdate, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -705,13 +715,13 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @param {string} id 
-     * @param {object} body 
+     * @param {TaskDto} taskDto 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public create(id: string, body: object, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).create(id, body, options).then((request) => request(this.axios, this.basePath));
+    public create(id: string, taskDto: TaskDto, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).create(id, taskDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -782,13 +792,13 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {object} body 
+     * @param {AuthDtoSignin} authDtoSignin 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public signin(body: object, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).signin(body, options).then((request) => request(this.axios, this.basePath));
+    public signin(authDtoSignin: AuthDtoSignin, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).signin(authDtoSignin, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -803,36 +813,36 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @param {object} body 
+     * @param {AuthDto} authDto 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public signup(body: object, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).signup(body, options).then((request) => request(this.axios, this.basePath));
+    public signup(authDto: AuthDto, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).signup(authDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @param {object} body 
+     * @param {AuthDtoUpdatePassword} authDtoUpdatePassword 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public updatePassword(body: object, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).updatePassword(body, options).then((request) => request(this.axios, this.basePath));
+    public updatePassword(authDtoUpdatePassword: AuthDtoUpdatePassword, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updatePassword(authDtoUpdatePassword, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @param {string} id 
      * @param {string} taskId 
-     * @param {object} body 
+     * @param {TaskUpdate} taskUpdate 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public updateTask(id: string, taskId: string, body: object, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).updateTask(id, taskId, body, options).then((request) => request(this.axios, this.basePath));
+    public updateTask(id: string, taskId: string, taskUpdate: TaskUpdate, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateTask(id, taskId, taskUpdate, options).then((request) => request(this.axios, this.basePath));
     }
 }
